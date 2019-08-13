@@ -17,10 +17,19 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
 
     //dichiariamo le variabili
     private ArrayList<Person> people;
+    ItemClicked activity;
+
+    //l'interfaccia serve per far funzionare il passaggio dei dati (non la visualizzazione)
+    public interface ItemClicked{
+        void onItemClicked(int index);
+    }
+
 
     public PersonAdapter (Context context, ArrayList<Person> list)
     {
+
         people = list;
+        activity = (ItemClicked) context;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder
@@ -35,6 +44,8 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    activity.onItemClicked(people.indexOf((Person) view.getTag()));
 
                 }
             });

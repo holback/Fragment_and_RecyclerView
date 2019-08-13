@@ -45,6 +45,11 @@ public class List extends Fragment {
 
     }
 
+    public void notifyDataChanged()
+    {
+        myAdapter.notifyDataSetChanged();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
